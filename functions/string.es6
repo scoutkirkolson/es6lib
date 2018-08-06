@@ -1,4 +1,4 @@
-import * as Cmp from 'compare.es6';
+import * as Cmp from './compare.es6';
 
 //FUNCTION unquote
 export function unquote(str) {

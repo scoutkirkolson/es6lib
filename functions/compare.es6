@@ -1,4 +1,4 @@
-import * as Str from 'string.es6';
+import * as Str from './string.es6';
 
 //FUNCTION is_array
 export function is_array(input) {

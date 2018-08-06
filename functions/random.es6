@@ -1,30 +1,30 @@
 //GLOBAL variables
-if (typeof window.FALSE == 'undefined')  {window.FALSE  = false;};
-if (typeof window.TRUE == 'undefined')   {window.TRUE   = true;};
-if (typeof window.NULL == 'undefined')   {window.NULL   = null;};
+if (typeof window.FALSE === 'undefined')  {window.FALSE  = false;};
+if (typeof window.TRUE === 'undefined')   {window.TRUE   = true;};
+if (typeof window.NULL === 'undefined')   {window.NULL   = null;};
 
 export function random(max) {
   let anynumber = 1+ parseInt(100000000*Math.random()) % max;
   return(anynumber);
-};
+}
 
 
 //FUNCTION S1
 export function S1() {
    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-};
+}
 
 
 //function S4
 export function S4() {
    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-};
+}
 
 
 //FUNCTION uuid
 export function uuid() {
    return (S4()+S4()+S4()+S4()+S4()+S4()+S4()+S4());
-};
+}
 
 
 //FUNCTION uuid
@@ -53,7 +53,7 @@ export function guid() {
     var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
     return v.toString(16);
   });
-};
+}
 
 /*
 //FUNCTION valueOrBool

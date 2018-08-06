@@ -1,8 +1,8 @@
-import * as Str from '../libraries/string.es6';
+import * as Str from 'string.es6';
 
 //FUNCTION is_array
 export function is_array(input) {
-  return (typeof(input)=='object' && (input instanceof Array)) || (typeof(input)=='object' && !is_null(input) && typeof(input.length) == 'number');
+  return (typeof(input) === 'object' && (input instanceof Array)) || (typeof(input) === 'object' && !is_null(input) && typeof(input.length) === 'number');
 }
 
 
@@ -27,14 +27,14 @@ export function is_numeric(mixed_var) {
   }
 
   return !isNaN(mixed_var * 1);
-};
+}
 
 
 //FUNCTION is_number
 export function is_number(mixed_var){
   //return typeof mixed_var == 'number' || !isNaN(parseFloat(mixed_var));
-  return typeof mixed_var == 'number' && !isNaN(parseFloat(mixed_var));
-};
+  return typeof mixed_var === 'number' && !isNaN(parseFloat(mixed_var));
+}
 
 
 //FUNCTION is_null
@@ -49,7 +49,7 @@ export function is_null(mixed_var){
   // *     example 2: is_null(null);
   // *     returns 2: true
     return (mixed_var === null);
-};
+}
 
 
 //FUNCTION is_null
@@ -64,25 +64,25 @@ export function is_nullic(mixed_var) {
   }
 
   return false;
-};
+}
 
 
 //FUNCTION is_string
 export function is_string(s){
-  return (typeof(s) != 'undefined') ? (typeof(s) === 'string' || s instanceof String) : false;
-};
+  return (typeof(s) !== 'undefined') ? (typeof(s) === 'string' || s instanceof String) : false;
+}
 
 
 //FUNCTION is_object
 export function is_object(mixed_var) {
-  return (typeof mixed_var =='object' && !is_array(mixed_var));
-};
+  return (typeof mixed_var === 'object' && !is_array(mixed_var));
+}
 
 
 //FUNCTION is_function
 export function is_function(mixed_var) {
-  return (typeof mixed_var =='function');
-};
+  return (typeof mixed_var === 'function');
+}
 
 
 //FUNCTION is_true
@@ -90,13 +90,13 @@ export function is_true(mixed_var, defaultvalue=false) {
   if (is_string(mixed_var)) {
     return Str.comparetext(mixed_var, 'true') || Str.comparetext(mixed_var, '1') || Str.comparetext(mixed_var, 'yes') || Str.comparetext(mixed_var, 'on');
   } else if (is_number(mixed_var)) {
-    return mixed_var != 0;
+    return mixed_var !== 0;
   } else if (is_bool(mixed_var)) {
     return mixed_var === true;
   } else {
     return defaultvalue;
   }
-};
+}
 
 
 //FUNCTION is_false
@@ -104,32 +104,32 @@ export function is_false(mixed_var, defaultvalue=false) {
   if (is_string(mixed_var)) {
     return Str.comparetext(mixed_var, 'false') || Str.comparetext(mixed_var, '0') || Str.comparetext(mixed_var, 'no') || Str.comparetext(mixed_var, 'off');
   } else if (is_number(mixed_var)) {
-    return mixed_var == 0;
+    return mixed_var === 0;
   } else if (is_bool(mixed_var)) {
     return mixed_var === false;
   } else {
     return defaultvalue;
   }
-};
+}
 
 
 //FUNCTION is_nan
 export function is_nan(mixed_var) {
   return isNaN(mixed_var);
-};
+}
 
 
 //FUNCTION is_undefined
 export function is_undefined(mixed_var) {
-  return (typeof mixed_var == 'undefined');
-};
+  return (typeof mixed_var === 'undefined');
+}
 
 
 //FUNCTION is_empty
 export function is_emptytext(mixed_var, trimtext) {
-  trimtext = typeof trimtext == 'undefined' ? false : trimtext;
+  trimtext = typeof trimtext === 'undefined' ? false : trimtext;
 
-  if (typeof mixed_var == 'string') {
+  if (typeof mixed_var === 'string') {
     if (trimtext) {
       return mixed_var.trim() === '';
       } else {
@@ -138,14 +138,14 @@ export function is_emptytext(mixed_var, trimtext) {
   } else {
     return false;
   }
-};
+}
 
 
 //FUNCTION is_empty
 export function is_empty(mixed_var) {
   var name;
 
-  if (typeof mixed_var == 'undefined') {
+  if (typeof mixed_var === 'undefined') {
     //undefined = empty
     return true;
 
@@ -155,7 +155,7 @@ export function is_empty(mixed_var) {
       return true;
     } else if (is_array(mixed_var)) {
       //[] = empty
-      return mixed_var.length == 0;
+      return mixed_var.length === 0;
     } else {
       //{} = empty
       for (name in mixed_var ) {
@@ -168,75 +168,75 @@ export function is_empty(mixed_var) {
     //"", "null", "NULL" = empty
     mixed_var = mixed_var.trim();
 
-    if (mixed_var != 'null'
-    &&  mixed_var != 'NULL'
-    &&  mixed_var != '{null}'
-    &&  mixed_var != 'false'
-    &&  mixed_var != 'FALSE'
-    &&  mixed_var != 'NaN'
-    &&  mixed_var != 'undefined'
-    &&  mixed_var != '0'
-    &&  mixed_var != ''
-    &&  mixed_var != '<xml></xml>'
-    &&  mixed_var != '<xml><record></record></xml>') {
+    if (mixed_var !== 'null'
+    &&  mixed_var !== 'NULL'
+    &&  mixed_var !== '{null}'
+    &&  mixed_var !== 'false'
+    &&  mixed_var !== 'FALSE'
+    &&  mixed_var !== 'NaN'
+    &&  mixed_var !== 'undefined'
+    &&  mixed_var !== '0'
+    &&  mixed_var !== ''
+    &&  mixed_var !== '<xml></xml>'
+    &&  mixed_var !== '<xml><record></record></xml>') {
     //&&  mixed_var != '-1'
         return false;
     } else {
       return true;
     }
 
-  } else if (typeof mixed_var == 'number') {
+  } else if (typeof mixed_var === 'number') {
     //0 = empty
     if (isNaN(mixed_var)) {
       return true;
-    } else if (mixed_var != -1
-           &&  mixed_var != 0) {
+    } else if (mixed_var !== -1
+           &&  mixed_var !== 0) {
       return false;
     } else {
       return true;
     }
 
-  } else if (typeof mixed_var == 'boolean') {
+  } else if (typeof mixed_var === 'boolean') {
     //false = empty
     return !mixed_var;
 
-  } else if (typeof mixed_var == 'function') {
+  } else if (typeof mixed_var === 'function') {
     //false = empty
     return false;
 
   } else {
     return true;
   }
-};
+}
 
 
 //FUNCTION is_bool
 export function is_bool(mixed_var) {
-  if (typeof mixed_var == 'undefined') {
+  if (typeof mixed_var === 'undefined') {
     return false;
 
-  } else if (typeof mixed_var == 'object') {
+  } else if (typeof mixed_var === 'object') {
     return false;
 
-  } else if (typeof mixed_var == 'string') {
-    if (mixed_var.toLowerCase() == 'true'
-    ||  mixed_var.toLowerCase() == 'false'
-    ||  mixed_var == '1'
-    ||  mixed_var == '0') {
+  } else if (typeof mixed_var === 'string') {
+    if (mixed_var.toLowerCase() === 'true'
+    ||  mixed_var.toLowerCase() === 'false'
+    ||  mixed_var === '1'
+    ||  mixed_var === '0') {
       return true;
     } else {
       return false;
     }
 
-  } else if (typeof mixed_var == 'number') {
-    if (mixed_var == 1
-    ||  mixed_var == 0) {
+  } else if (typeof mixed_var === 'number') {
+    if (mixed_var === 1
+    ||  mixed_var === 0) {
       return true;
     } else {
       return false;
     }
 
-  } else if (typeof mixed_var == 'boolean') {
+  } else if (typeof mixed_var === 'boolean') {
     return true;
   } else {
     return false;
@@ -247,107 +247,95 @@ export function is_bool(mixed_var) {
 //FUNCTION is_tempid
 export function is_tempid(s){
   if (is_string(s)) {
-    if (s.slice(0, 5) == 'zzzzz') {
-      return true;
-    } else {
-      return false;
-    }
+    return (s.slice(0, 5) === 'zzzzz')
   } else {
-    return is_empty(s);
+    return is_empty(s)
   }
-};
+}
 
 
 //FUNCTION compare_null
 export function compare_null(var1, var2) {
-  if (     (var1 == null     && var2 == null)
-        || (var1 == null     && var2 == 'null')
-        || (var1 == null     && var2 == '{null}')
-        || (var1 == 'null'   && var2 == null)
-        || (var1 == 'null'   && var2 == 'null')
-        || (var1 == 'null'   && var2 == '{null}')
-        || (var1 == '{null}' && var2 == null)
-        || (var1 == '{null}' && var2 == 'null')
-        || (var1 == '{null}' && var2 == '{null}')
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
+  return (   (var1 === null     && var2 === null)
+          || (var1 === null     && var2 === 'null')
+          || (var1 === null     && var2 === '{null}')
+          || (var1 === 'null'   && var2 === null)
+          || (var1 === 'null'   && var2 === 'null')
+          || (var1 === 'null'   && var2 === '{null}')
+          || (var1 === '{null}' && var2 === null)
+          || (var1 === '{null}' && var2 === 'null')
+          || (var1 === '{null}' && var2 === '{null}')
+    )
+}
 
 
 //FUNCTION compare_empty
 export function compare_empty(var1, var2) {
-  if (     (var1 == null              && var2 == null)
-        || (var1 == null              && var2 == '')
-        || (var1 == null              && var2 == 'null')
-        || (var1 == null              && var2 == 'NULL')
-        || (var1 == null              && var2 == '{null}')
-        || (var1 == null              && var2 == -1)
-        || (var1 == null              && var2 == '-1')
-        || (var1 == null              && typeof var2 == 'undefined')
-        || (var1 == 'null'            && var2 == null)
-        || (var1 == 'null'            && var2 == '')
-        || (var1 == 'null'            && var2 == 'null')
-        || (var1 == 'null'            && var2 == 'NULL')
-        || (var1 == 'null'            && var2 == '{null}')
-        || (var1 == 'null'            && var2 == -1)
-        || (var1 == 'null'            && var2 == '-1')
-        || (var1 == 'null'            && typeof var2 == 'undefined')
-        || (var1 == 'NULL'            && var2 == null)
-        || (var1 == 'NULL'            && var2 == '')
-        || (var1 == 'NULL'            && var2 == 'null')
-        || (var1 == 'NULL'            && var2 == 'NULL')
-        || (var1 == 'NULL'            && var2 == '{null}')
-        || (var1 == 'NULL'            && var2 == -1)
-        || (var1 == 'NULL'            && var2 == '-1')
-        || (var1 == 'NULL'            && typeof var2 == 'undefined')
-        || (var1 == '{null}'          && var2 == null)
-        || (var1 == '{null}'          && var2 == '')
-        || (var1 == '{null}'          && var2 == 'null')
-        || (var1 == '{null}'          && var2 == 'NULL')
-        || (var1 == '{null}'          && var2 == '{null}')
-        || (var1 == '{null}'          && var2 == -1)
-        || (var1 == '{null}'          && var2 == '-1')
-        || (var1 == '{null}'          && typeof var2 == 'undefined')
-        || (var1 == ''                && var2 == null)
-        || (var1 == ''                && var2 == '')
-        || (var1 == ''                && var2 == 'null')
-        || (var1 == ''                && var2 == 'NULL')
-        || (var1 == ''                && var2 == '{null}')
-        || (var1 == ''                && var2 == -1)
-        || (var1 == ''                && var2 == '-1')
-        || (var1 == ''                && typeof var2 == 'undefined')
-        || (var1 == '-1'              && var2 == null)
-        || (var1 == '-1'              && var2 == '')
-        || (var1 == '-1'              && var2 == 'null')
-        || (var1 == '-1'              && var2 == 'NULL')
-        || (var1 == '-1'              && var2 == '{null}')
-        || (var1 == '-1'              && var2 == -1)
-        || (var1 == '-1'              && var2 == '-1')
-        || (var1 == '-1'              && typeof var2 == 'undefined')
-        || (var1 == -1                && var2 == null)
-        || (var1 == -1                && var2 == '')
-        || (var1 == -1                && var2 == 'null')
-        || (var1 == -1                && var2 == 'NULL')
-        || (var1 == -1                && var2 == '{null}')
-        || (var1 == -1                && var2 == -1)
-        || (var1 == -1                && var2 == '-1')
-        || (var1 == -1                && typeof var2 == 'undefined')
-        || (typeof var1=='undefined'  && typeof var2=='undefined')
-        || (typeof var1=='undefined'  && var2 == null)
-        || (typeof var1=='undefined'  && var2 == '')
-        || (typeof var1=='undefined'  && var2 == 'null')
-        || (typeof var1=='undefined'  && var2 == 'NULL')
-        || (typeof var1=='undefined'  && var2 == '{null}')
-        || (typeof var1=='undefined'  && var2 == '-1')
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
+  return (   (var1 === null              && var2 === null)
+          || (var1 === null              && var2 === '')
+          || (var1 === null              && var2 === 'null')
+          || (var1 === null              && var2 === 'NULL')
+          || (var1 === null              && var2 === '{null}')
+          || (var1 === null              && var2 === -1)
+          || (var1 === null              && var2 === '-1')
+          || (var1 === null              && typeof var2 === 'undefined')
+          || (var1 === 'null'            && var2 === null)
+          || (var1 === 'null'            && var2 === '')
+          || (var1 === 'null'            && var2 === 'null')
+          || (var1 === 'null'            && var2 === 'NULL')
+          || (var1 === 'null'            && var2 === '{null}')
+          || (var1 === 'null'            && var2 === -1)
+          || (var1 === 'null'            && var2 === '-1')
+          || (var1 === 'null'            && typeof var2 === 'undefined')
+          || (var1 === 'NULL'            && var2 === null)
+          || (var1 === 'NULL'            && var2 === '')
+          || (var1 === 'NULL'            && var2 === 'null')
+          || (var1 === 'NULL'            && var2 === 'NULL')
+          || (var1 === 'NULL'            && var2 === '{null}')
+          || (var1 === 'NULL'            && var2 === -1)
+          || (var1 === 'NULL'            && var2 === '-1')
+          || (var1 === 'NULL'            && typeof var2 === 'undefined')
+          || (var1 === '{null}'          && var2 === null)
+          || (var1 === '{null}'          && var2 === '')
+          || (var1 === '{null}'          && var2 === 'null')
+          || (var1 === '{null}'          && var2 === 'NULL')
+          || (var1 === '{null}'          && var2 === '{null}')
+          || (var1 === '{null}'          && var2 === -1)
+          || (var1 === '{null}'          && var2 === '-1')
+          || (var1 === '{null}'          && typeof var2 === 'undefined')
+          || (var1 === ''                && var2 === null)
+          || (var1 === ''                && var2 === '')
+          || (var1 === ''                && var2 === 'null')
+          || (var1 === ''                && var2 === 'NULL')
+          || (var1 === ''                && var2 === '{null}')
+          || (var1 === ''                && var2 === -1)
+          || (var1 === ''                && var2 === '-1')
+          || (var1 === ''                && typeof var2 === 'undefined')
+          || (var1 === '-1'              && var2 === null)
+          || (var1 === '-1'              && var2 === '')
+          || (var1 === '-1'              && var2 === 'null')
+          || (var1 === '-1'              && var2 === 'NULL')
+          || (var1 === '-1'              && var2 === '{null}')
+          || (var1 === '-1'              && var2 === -1)
+          || (var1 === '-1'              && var2 === '-1')
+          || (var1 === '-1'              && typeof var2 === 'undefined')
+          || (var1 === -1                && var2 === null)
+          || (var1 === -1                && var2 === '')
+          || (var1 === -1                && var2 === 'null')
+          || (var1 === -1                && var2 === 'NULL')
+          || (var1 === -1                && var2 === '{null}')
+          || (var1 === -1                && var2 === -1)
+          || (var1 === -1                && var2 === '-1')
+          || (var1 === -1                && typeof var2 === 'undefined')
+          || (typeof var1==='undefined'  && typeof var2==='undefined')
+          || (typeof var1==='undefined'  && var2 === null)
+          || (typeof var1==='undefined'  && var2 === '')
+          || (typeof var1==='undefined'  && var2 === 'null')
+          || (typeof var1==='undefined'  && var2 === 'NULL')
+          || (typeof var1==='undefined'  && var2 === '{null}')
+          || (typeof var1==='undefined'  && var2 === '-1')
+  )
+}
 
 
 //FUNCTION coalesce
@@ -360,6 +348,7 @@ export function coalesce() {
   }
   return null;
 }
+
 
 //FUNCTION coalesce_str
 // zelfde als coalesce maar naast null en undefined worden ook 0, '' en '  ' NIET gematcht
@@ -387,19 +376,15 @@ export function is_iterable(obj) {
     return typeof obj[Symbol.iterator] === 'function';
 }
 
+
 //FUNCTION is_json
 export function is_json(str) {
-    if (/^[\],:{}\s]*$/
+    return (/^[\],:{}\s]*$/
         .test(str.replace(/\\["\\\/bfnrtu]/g, '@')
         .replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']')
-        .replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
-
-        return true;
-
-    } else {
-        return false;
-    }
+        .replace(/(?:^|:|,)(?:\s*\[)+/g, '')))
 }
+
 
 //FUNCTION is_email
 export function is_email(string) {

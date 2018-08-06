@@ -9,7 +9,7 @@ export function objectValue() {
     for (var i=1; i<arguments.length; i++) {
       returnvalue = returnvalue[arguments[i]];
 
-      if (typeof returnvalue == 'undefined'
+      if (typeof returnvalue === 'undefined'
       ||  returnvalue === null) {
         returnvalue = null;
         break;
@@ -28,6 +28,6 @@ export function objectAlert(obj){
         alertObject(obj[key]);
     }
   }
-};
+}
 
 

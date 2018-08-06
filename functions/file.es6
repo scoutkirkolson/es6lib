@@ -5,7 +5,7 @@ export function fileName(filename) {
   filename = filename.toLowerCase();
 
   return filename;
-};
+}
 
 
 //FUNCTION fileExtension
@@ -19,7 +19,7 @@ export function fileExtension(filename) {
   } else {
     return false;
   }
-};
+}
 
 
 //FUNCTION baseName
@@ -34,11 +34,11 @@ export function baseName(path, suffix) {
 
   var b = path.replace(/^.*[\/\\]/g, '');
 
-  if (typeof(suffix) == 'string' && b.substr(b.length-suffix.length) == suffix) {
+  if (typeof(suffix) === 'string' && b.substr(b.length-suffix.length) === suffix) {
     b = b.substr(0, b.length-suffix.length);
   }
 
   return b;
-};
+}
 
 

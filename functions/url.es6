@@ -1,3 +1,4 @@
+//FUNCTION urlGetParamByName
 export function urlGetParamByName(name, defaultvalue=null, url=null) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -9,6 +10,8 @@ export function urlGetParamByName(name, defaultvalue=null, url=null) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+
+//FUNCTION urlReplaceParamByName
 export function urlReplaceParamByName(name, replace, url=null) {
     if (!url) url = window.location.href;
 
@@ -20,6 +23,8 @@ export function urlReplaceParamByName(name, replace, url=null) {
     return url;
 }
 
+
+//FUNCTION urlRemoveParamByName
 export function urlRemoveParamByName(name, url=null) {
     if (!url) url = window.location.href;
 
@@ -31,6 +36,8 @@ export function urlRemoveParamByName(name, url=null) {
     return url;
 }
 
+
+//FUNCTION urlGetParams
 export function urlGetParams(url=null) {
   // get query string from url (optional) or window
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1);

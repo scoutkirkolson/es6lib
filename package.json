@@ -1,6 +1,6 @@
 {
   "name": "es6lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "es6 helper functions",
   "private": true,
   "scripts": {

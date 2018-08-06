@@ -1,8 +1,8 @@
 {
   "name": "es6lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "es6 helper functions",
-  "private": true,    
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
